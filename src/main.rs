@@ -10,6 +10,13 @@ fn match_token(input: &String) -> String {
 }
 
 
+fn lex(input: &String) -> Vec<String> {
+    let mut tokens: Vec<String> = vec!();
+    tokens.push(match_token(input));
+    return tokens;
+}
+
+
 fn build_file(filename: &String) {
     let mut f = File::open(filename).expect("file not found");
 
@@ -17,7 +24,7 @@ fn build_file(filename: &String) {
     f.read_to_string(&mut contents).expect("error reading contents");
 
     println!("Contents:\n{}", contents);
-    match_token(&contents);
+    lex(&contents);
 }
 
 
